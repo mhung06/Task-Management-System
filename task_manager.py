@@ -1,10 +1,3 @@
-"""
-Task Management System
-----------------------
-Console application to add, edit, delete and view tasks.
-Tasks can be organized by status, priority and due date.
-Data is saved to tasks.json so it persists between runs.
-"""
 
 import json
 import os
@@ -17,9 +10,6 @@ STATUSES = ["Todo", "In Progress", "Done"]
 PRIORITIES = ["Low", "Medium", "High"]
 
 
-# ---------------------------------------------------------------------------
-# Data storage
-# ---------------------------------------------------------------------------
 def load_tasks():
     """Load tasks from the JSON file (empty list if file does not exist)."""
     if not os.path.exists(DATA_FILE):
@@ -43,9 +33,7 @@ def next_id(tasks):
     return max((t["id"] for t in tasks), default=0) + 1
 
 
-# ---------------------------------------------------------------------------
-# Input validation
-# ---------------------------------------------------------------------------
+
 def input_text(prompt, allow_empty=False):
     """Ask for text; keep asking until valid."""
     while True:
@@ -98,9 +86,7 @@ def find_task(tasks, task_id):
     return None
 
 
-# ---------------------------------------------------------------------------
-# Display
-# ---------------------------------------------------------------------------
+
 def display_tasks(tasks, title="TASK LIST"):
     """Print tasks in a clear table."""
     print(f"\n=== {title} ===")
@@ -130,9 +116,6 @@ def show_task_detail(task):
     print(f"  Due date    : {task['due_date']}")
 
 
-# ---------------------------------------------------------------------------
-# Features
-# ---------------------------------------------------------------------------
 def add_task(tasks):
     print("\n--- Add new task ---")
     task = {
@@ -223,9 +206,7 @@ def view_tasks(tasks):
         print("Invalid choice.")
 
 
-# ---------------------------------------------------------------------------
-# Main menu
-# ---------------------------------------------------------------------------
+
 def main():
     tasks = load_tasks()
     while True:
